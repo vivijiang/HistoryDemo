@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div class="row" id="app">
+    <div data-bind="with: ProductsViewModel" class="col-sm-2">
+        <ul class="list-unstyled" id="products" data-bind="foreach:products">
+            <li data-bind="text:ProductName, attr:{'data-id':ProductId}, click: $parent.clickProduct "></li>
+        </ul>
+    </div>
+    <div data-bind="with: AreasViewModel" class="col-sm-2">
+
+        <ul class="list-unstyled" id="areas" data-bind="foreach:areas">
+            <li data-bind="text:AreaName, attr:{'data-id':AreaId}, click: $parent.clickArea "></li>
+        </ul>
+
+    </div>
+    <div data-bind="with: BlurbViewModel" class="col-sm-8">
+        <ul class="list-unstyled" id="blurbs" data-bind="foreach:blurbs">
+            <li data-bind="text:BlurbName, attr:{'data-id':BlurbId}, click: $parent.clickBlurb "></li>
+        </ul>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/historydemo")
+    <script type="text/javascript">
+        var products = [
+{
+    ProductName: 'ODIN+',
+    ProductId: 1
+},
+{
+    ProductName: 'EFP',
+    ProductId: 2
+}];
+        var appViewModel = new AppViewModel();
+        var productsViewModel = new ProductsViewModel(appViewModel);
+        productsViewModel.products(products);
+        appViewModel.ProductsViewModel(productsViewModel);
+        ko.applyBindings(appViewModel, $('#app')[0]);
+
+    </script>
+}
