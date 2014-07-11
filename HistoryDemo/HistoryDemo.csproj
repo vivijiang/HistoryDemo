@@ -180,7 +180,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\app\AppHistory.js" />
     <Content Include="Scripts\app\Product.js" />
     <Content Include="Scripts\bootstrap.js" />
